@@ -1,10 +1,28 @@
-module Task21Lib(sumOfAmicableMap, sumOfAmicableFold) where
+module Task21Lib(sumOfAmicableMap, sumOfAmicableFold, sumOfAmicableRec, sumOfAmicableInfList, sumOfAmicableModule) where
+
+sumOfAmicableRec :: Int -> Int
+sumOfAmicableRec x
+    | x == 1 = 0
+    | checkAmicableBool (x, divSum) = x + sumOfAmicableRec next
+    | otherwise = sumOfAmicableRec next
+    where 
+        next = x - 1
+        divSum = primeFactorsSum x
 
 sumOfAmicableMap :: Int -> Int
 sumOfAmicableMap = sum . map checkAmicable . toVector . primeFactorsSumList
 
 sumOfAmicableFold :: Int -> Int
 sumOfAmicableFold = sum . map fst . filter checkAmicableBool . toVector . primeFactorsSumList
+
+sumOfAmicableInfList :: Int -> Int
+sumOfAmicableInfList x = sum . map checkAmicable . toVector . map primeFactorsSum . takeWhile (< x) $ [1..] 
+
+sumOfAmicableModule :: Int -> Int
+sumOfAmicableModule = sum . filterAmicable . primeFactorsSumList
+
+filterAmicable :: [Int] -> [Int]
+filterAmicable = map fst . filter checkAmicableBool . toVector
 
 toVector:: [Int] -> [(Int, Int)]
 toVector = zip [1..]
