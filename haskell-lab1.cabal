@@ -25,9 +25,8 @@ source-repository head
 
 library
   exposed-modules:
+      AVL
       Lib
-      Task10Lib
-      Task21Lib
   other-modules:
       Paths_haskell_lab1
   hs-source-dirs:
@@ -59,6 +58,7 @@ test-suite haskell-lab1-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       HUnit
+    , QuickCheck
     , base >=4.7 && <5
     , haskell-lab1
   default-language: Haskell2010

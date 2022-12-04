@@ -58,3 +58,4 @@ tests:
     dependencies:
     - haskell-lab1
     - HUnit
+    - QuickCheck

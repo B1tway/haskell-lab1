@@ -1,24 +1,24 @@
-import Task10Lib (sumOfPrimesTail, sumOfPrimesModule, sumOfPrimesMap, sumOfPrimesFold, sumOfPrimesInfList)
+import AVL
 import Test.HUnit ( assertEqual, runTestTTAndExit, Test(..) )
+import           Data.Maybe
 
 main :: IO ()
 main = runTestTTAndExit tests
 
-test1 :: Test
-test1 = TestCase (assertEqual "for (sumOfPrimesFold)," (sumOfPrimesFold 10000) 5736396)
+insertElements :: Ord t => Tree t -> [t] -> Tree t
+insertElements = foldl (flip insert)
 
-test2 :: Test
-test2 = TestCase (assertEqual "for (sumOfPrimesModule)," sumOfPrimesModule 5736396)
+testEmpty :: Test
+testEmpty = TestCase (assertEqual "TestEmpty" (isEmpty empty) True)
 
-test3 :: Test
-test3 = TestCase (assertEqual "for (sumOfPrimesTail)," (sumOfPrimesTail 10000) 5736396)
+testSize :: Test
+testSize = TestCase (assertEqual "TestSize" (size (insertElements empty [1..10])) 10) 
 
-test4 :: Test
-test4 = TestCase (assertEqual "for (sumOfPrimesMap)," (sumOfPrimesMap 10000) 5736396)
+testHeight :: Test
+testHeight = TestCase (assertEqual "TestHeight" (height (insertElements empty [1..10])) 4) 
 
-test5 :: Test
-test5 = TestCase (assertEqual "for (sumOfPrimesMap)," (sumOfPrimesInfList 10000) 5736396)
-
+testFind :: Test
+testFind = TestCase (assertEqual "TestFind" (fromJust(find 4 (insertElements empty [1 .. 10]))) 4) 
 
 tests :: Test
-tests = TestList [TestLabel "test1" test1, TestLabel "test2" test2, TestLabel "test3" test3, TestLabel "test4" test4, TestLabel "test5" test5]
+tests = TestList [testEmpty, testSize, testHeight, testFind]
