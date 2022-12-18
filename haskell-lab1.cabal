@@ -58,7 +58,12 @@ test-suite haskell-lab1-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       HUnit
-    , QuickCheck
     , base >=4.7 && <5
     , haskell-lab1
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , tasty-smallcheck
+    , test-framework
+    , test-framework-hunit
   default-language: Haskell2010

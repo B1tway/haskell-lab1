@@ -56,6 +56,11 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - haskell-lab1
+    - test-framework
+    - test-framework-hunit
+    - tasty
+    - tasty-hunit
+    - tasty-quickcheck
+    - tasty-smallcheck
     - HUnit
-    - QuickCheck
+    - haskell-lab1

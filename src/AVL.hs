@@ -1,4 +1,3 @@
-{-# LANGUAGE InstanceSigs #-}
 module AVL(
     Tree,
     empty,
